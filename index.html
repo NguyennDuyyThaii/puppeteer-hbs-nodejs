@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>eDocs</title>
+  </head>
+  <style type="text/css">
+    @page {
+      size: A4;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    .main {
+      margin: 0px;
+      margin-top: 0px;
+      color: black;
+      padding: 20px;
+    }
+
+    .header {
+      display: flex;
+    }
+
+    .logo {
+      align-content: flex-start;
+      flex: 1;
+      align-items: center;
+    }
+
+    .content {
+      display: flex;
+      align-items: flex-end;
+      flex: 1;
+    }
+
+    .header .content .box:first-child {
+      width: 50%;
+    }
+
+    .body .passengers .header-box {
+      display: flex;
+    }
+
+    .body .passengers .header-box div:not(:nth-of-type(2)) {
+      flex-basis: 48%;
+      border-radius: 5px;
+      background-color: rgb(26, 44, 77);
+      border: 1px solid rgb(26, 44, 77);
+      padding: 10px;
+      color: white;
+    }
+
+    .body .passengers .header-box div:nth-of-type(2) {
+      flex-basis: auto;
+      padding: 10px;
+    }
+
+    .body .passengers .group-info {
+      padding: 10px;
+    }
+
+    /* info and passengers */
+    .group-info-passengers {
+      display: grid;
+      grid-template-columns: auto auto;
+      grid-gap: 10px;
+      margin: 1rem auto;
+    }
+
+    .group-info-passengers .title {
+      margin: 1rem auto;
+      background-color: rgb(26, 44, 77);
+      padding: 10px;
+      color: #ffffff;
+      font-weight: bold;
+      border-radius: 10px;
+    }
+
+    .group-info-passengers .group-info-content {
+      padding: 10px;
+    }
+
+    .group-info-passengers .passengers-content {
+      padding: 10px;
+      font-size: 14px;
+      font-weight: 550;
+    }
+
+    /* flights */
+    .flights .flights-header {
+      background-color: rgb(26, 44, 77);
+      padding: 10px;
+      color: #ffffff;
+      font-weight: bold;
+      border-radius: 10px;
+    }
+
+    .flights .flights-content table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+      margin: 30px 0 !important;
+    }
+
+    .flights .flights-content th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 5px 8px;
+      font-weight: bold;
+      font-size: 11px;
+    }
+
+    .flights .flights-content tr td {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 12px;
+      font-size: 12px;
+    }
+
+    .flights .flights-content tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+
+    /* accommodation */
+    .accommodation .accommodation-header {
+      display: flex;
+      justify-content: space-between;
+      background-color: rgb(26, 44, 77);
+      border-radius: 10px;
+      color: #ffffff;
+      font-weight: bold;
+      padding: 10px;
+      align-items: center;
+    }
+
+    .accommodation .accommodation-header .header-right {
+      font-size: 10px;
+      text-align: center;
+      font-weight: 400;
+    }
+
+    .accommodation .accommodation-content .accommodation-content-header {
+      margin: 0.7rem auto;
+    }
+
+    .accommodation .accommodation-content .accommodation-content-header table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    .accommodation .accommodation-content .accommodation-content-header th {
+      text-align: left;
+      font-weight: bold;
+      font-size: 13px;
+    }
+
+    .accommodation .accommodation-content .accommodation-content-header tr td {
+      text-align: left;
+      font-size: 12px;
+    }
+
+    .accommodation .accommodation-content .accommodation-content-middle {
+      display: grid;
+      grid-template-columns: auto auto auto;
+      margin: 1rem auto;
+    }
+
+    .accommodation
+      .accommodation-content
+      .accommodation-content-middle
+      .content-middle-child {
+      font-size: 13px;
+    }
+
+    .accommodation
+      .accommodation-content
+      .accommodation-content-middle
+      .middle-child-header {
+      font-weight: bold;
+    }
+
+    .accommodation
+      .accommodation-content
+      .accommodation-content-footer
+      .footer-child-content {
+      font-size: 13px;
+    }
+
+    .accommodation
+      .accommodation-content
+      .accommodation-content-footer
+      .footer-child-header {
+      font-weight: bold;
+      font-size: 13px;
+    }
+
+    /* TRANSFERS */
+    .transfers {
+      margin: 1.5rem auto;
+    }
+
+    .transfers .transfers-header {
+      display: flex;
+      justify-content: space-between;
+      background-color: rgb(26, 44, 77);
+      border-radius: 10px;
+      color: #ffffff;
+      font-weight: bold;
+      padding: 10px;
+      align-items: center;
+    }
+
+    .transfers .transfers-header .header-right {
+      font-size: 10px;
+      text-align: center;
+      font-weight: 400;
+    }
+
+    .transfers .transfers-content .transfers-content-header {
+      margin: 0.7rem auto;
+    }
+
+    .transfers .transfers-content .transfers-content-header table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    .transfers .transfers-content .transfers-content-header th {
+      text-align: left;
+      font-weight: bold;
+      font-size: 13px;
+    }
+
+    .transfers .transfers-content .transfers-content-header tr td {
+      text-align: left;
+      font-size: 12px;
+    }
+
+    .transfers
+      .transfers-content
+      .transfers-content-footer
+      .footer-child-content {
+      font-size: 13px;
+    }
+
+    .transfers
+      .transfers-content
+      .transfers-content-footer
+      .footer-child-header {
+      font-weight: bold;
+      font-size: 13px;
+    }
+  </style>
+
+  <body>
+    <div class="main">
+      <header>
+        <div class="header">
+          <div class="logo">
+            <img
+              src="https://www.imgserver.ca/WestJetGroups/logo-westjet.png"
+            />
+          </div>
+          <div class="content">
+            <div class="box">
+              XYZ Travel<br />
+              123 NoWhere Street<br />
+              Toronto ON M5B 2E9<br />
+              <a href="#">weddings@posetravel.ca</a>
+            </div>
+            <div class="box" style="display: flex; flex: 1">
+              <div style="display: flex; flex-direction: column">
+                <strong>Booking No.:</strong>
+                <strong>Date:</strong>
+              </div>
+              <div
+                style="
+                  display: flex; /* margin-left: auto; */
+                  flex-direction: column;
+                "
+              >
+                <span style="margin-left: auto">55554433</span>
+                <span>23 March 2022</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        </header>
+
+        <h4 style="text-align: center">ELECTRONIC DOCUMENT</h4>
+        <div class="body">
+          <div class="group-info-passengers">
+            <div class="group-info">
+              <div class="title">GROUP INFO</div>
+              <div class="group-info-content">
+                <div>
+                  <strong>Group Name:</strong> <span>Monica & Kevin</span>
+                </div>
+                <div>
+                  <strong>Group Leader:</strong> <span>Monica Nguyen</span>
+                </div>
+                <div>
+                  <strong>Contact Number:</strong> <span>403.829.2472</span>
+                </div>
+              </div>
+            </div>
+            <div class="passengers">
+              <div class="title">PASSENGERS</div>
+              <div class="passengers-content">
+                <div>
+                  <span>MYRA MARK ROBERT</span>
+                </div>
+                <div>
+                  <span>TRAN LISA THI HUONG</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flights">
+            <div class="flights-header">FLIGHTS</div>
+            <div class="flights-content">
+              <table>
+                <tr>
+                  <th>From</th>
+                  <th>To</th>
+                  <th>Carrier</th>
+                  <th>Flight</th>
+                  <th>Departure Date and Time</th>
+                  <th>Arrival Date and Time</th>
+                  <th>PNR</th>
+                </tr>
+                <tr>
+                  <td>EDMONTON INTERNATIONAL AIRPORT(YEG)</td>
+                  <td>EDMONTON INTERNATIONAL AIRPORT(YEG)</td>
+                  <td>WS</td>
+                  <td>0242</td>
+                  <td>MAY 12 2022 @ 07:30</td>
+                  <td>MAY 12 2022 @ 07:30</td>
+                  <td>PYXQMI</td>
+                </tr>
+                <tr>
+                  <td>EDMONTON INTERNATIONAL AIRPORT(YEG)</td>
+                  <td>EDMONTON INTERNATIONAL AIRPORT(YEG)</td>
+                  <td>WS</td>
+                  <td>0242</td>
+                  <td>MAY 12 2022 @ 07:30</td>
+                  <td>MAY 12 2022 @ 07:30</td>
+                  <td>PYXQMI</td>
+                </tr>
+                <tr>
+                  <td>EDMONTON INTERNATIONAL AIRPORT(YEG)</td>
+                  <td>EDMONTON INTERNATIONAL AIRPORT(YEG)</td>
+                  <td>WS</td>
+                  <td>0242</td>
+                  <td>MAY 12 2022 @ 07:30</td>
+                  <td>MAY 12 2022 @ 07:30</td>
+                  <td>PYXQMI</td>
+                </tr>
+                <tr>
+                  <td>EDMONTON INTERNATIONAL AIRPORT(YEG)</td>
+                  <td>EDMONTON INTERNATIONAL AIRPORT(YEG)</td>
+                  <td>WS</td>
+                  <td>0242</td>
+                  <td>MAY 12 2022 @ 07:30</td>
+                  <td>MAY 12 2022 @ 07:30</td>
+                  <td>PYXQMI</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="accommodation">
+            <div class="accommodation-header">
+              <div class="header-left">ACCOMMODATION</div>
+              <div class="header-right">
+                NOTE: Check-in displayed in red due to overnight flights (next
+                day)
+              </div>
+            </div>
+            <div class="accommodation-content">
+              <div class="accommodation-content-header">
+                <table>
+                  <tr>
+                    <th>Hotel</th>
+                    <th>Destination</th>
+                    <th>Duration</th>
+                    <th>Check-in</th>
+                    <th>Check-out</th>
+                    <th>Occupancy</th>
+                    <th>Room Category</th>
+                    <th>Price</th>
+                  </tr>
+                  <tr>
+                    <td>Dreams Riviera Cancun</td>
+                    <td>Cancun</td>
+                    <td>7</td>
+                    <td>12 Mar 2022</td>
+                    <td>19 Mar 2022</td>
+                    <td>DOUBLE</td>
+                    <td>PREMIUM DELUXE PLUNGE POOL</td>
+                    <td>2,164.80</td>
+                  </tr>
+                </table>
+              </div>
+              <div class="accommodation-content-middle">
+                <div class="content-middle-child">
+                  <div class="middle-child-header">Hotel Address</div>
+                  <div class="middle-child-content">
+                    <span>Orta Federal Chumatal Cancun Ken 206 Manzana</span
+                    ><br />
+                    <span>20, Lukes XXXXX</span><br />
+                    <span>Xcaret, Mexico 77710</span>
+                  </div>
+                </div>
+                <div class="content-middle-child">
+                  <div class="middle-child-header">Supplier</div>
+                  <div class="middle-child-content">
+                    <span>Ocean Riviera Paradise</span>
+                  </div>
+                </div>
+                <div class="content-middle-child">
+                  <div class="middle-child-header">Special Requests</div>
+                  <div class="middle-child-content">
+                    <span>King size bed</span><br />
+                    <span>Bride & Groom</span>
+                  </div>
+                </div>
+              </div>
+              <div class="accommodation-content-footer">
+                <div class="footer-child-header">Special Requests</div>
+                <div class="footer-child-content">
+                  <span
+                    >Any special or mandatory information from the hotel that
+                    might exist and that belongs here.</span
+                  ><br />
+                  <span>It can span multiple lines.</span><br />
+                  <span>Maybe even three or four lines.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="transfers">
+            <div class="transfers-header">
+              <div class="header-left">TRANSFERS</div>
+              <div class="header-right">
+                NOTE: Arrival displayed in red due to overnight flights (next
+                day)
+              </div>
+            </div>
+            <div class="transfers-content">
+              <div class="transfers-content-header">
+                <table>
+                  <tr>
+                    <th>Transfer</th>
+                    <th>Destination</th>
+                    <th>Arrival</th>
+                    <th>Departure</th>
+                    <th>Supplier</th>
+                  </tr>
+                  <tr>
+                    <td>Shared Roundtrip Transfer</td>
+                    <td>Cancun, Mexico</td>
+                    <td>12 Mar 2022</td>
+                    <td>19 Mar 2022</td>
+                    <td>Best Day Travel</td>
+                  </tr>
+                </table>
+              </div>
+              <div class="transfers-content-footer">
+                <div class="footer-child-header">Transfer Information</div>
+                <div class="footer-child-content">
+                  <span
+                    >Upon arrival at the airport, after clearing immigration,
+                    collect your luggage and proceed to customs. After customs,
+                    proceed through the corridor, following the transportation
+                    signage until you are outside of the terminal. Please do not
+                    stop inside as your friendly Best Day Travel representative
+                    is located past the timeshare and taxi vendors and is
+                    outside the airport terminal holding a WestJet Vacations
+                    sign. Rest assured that we are expecting you and we will be
+                    waiting for you outside the terminal. Your rep will provide
+                    info about your return trip to the airport at your welcome
+                    briefing.</span
+                  ><br>
+                  <span>Please consult the WestJet Vacations binder at
+                    your hotel for your rep's hours of operation and contact
+                    info.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </body>
+</html>

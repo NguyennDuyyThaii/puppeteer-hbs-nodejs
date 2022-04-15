@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Student's profile</title>
+	<head>
+	<style type="text/css">
+  @page {
+      size: A4;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    }
+
+    header {
+      margin: 1rem auto;
+          font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .main {
+        width: 100%;
+      margin: 0;
+      color: black;
+          font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .header {
+      display: flex;
+    }
+
+    .logo {
+      align-content: flex-start;
+      flex: 1;
+      align-items: center;
+    }
+
+    .content {
+      display: flex;
+      align-items: flex-end;
+      flex: 1;
+    }
+
+	.header .content .box:first-child {
+      width: 50%;
+    }
+
+    .body .passengers .header-box {
+      display: flex;
+    }
+
+	
+    .body .passengers .header-box div:not(:nth-of-type(2)) {
+      flex-basis: 48%;
+      border-radius: 5px;
+      background-color: rgb(25,44,79);
+      border: 1px solid rgb(25,44,79);
+      padding: 10px;
+      color: white;
+    }
+
+	.body .passengers .header-box div:nth-of-type(2) {
+      flex-basis: auto;
+      padding: 10px;
+    }
+
+    .body .passengers .group-info {
+      padding: 10px;
+    }
+
+	.group-info-passengers {
+      display: grid;
+      grid-template-columns: 50% 50%;
+      grid-gap: 10px;
+      margin: 0.5rem auto;
+      font-size: 9.5;
+    }
+
+	.group-info-passengers .title {
+      background-color: rgb(25,44,79);
+      padding: 10px;
+      color: white;
+      font-weight: bold;
+      border-radius: 10px;
+    }
+
+	.group-info-passengers .group-info-content {
+      padding: 10px;
+    }
+
+    .group-info-passengers .passengers-content {
+      padding: 10px;
+      font-size: 14px;
+      font-weight: 550;
+    }
+
+	 /* flights */
+	 .flights .flights-header {
+      background-color: rgb(25,44,79);
+      padding: 10px;
+      color: white;
+      font-weight: bold;
+      border-radius: 10px;
+    }
+
+    .flights .flights-content table {
+      font-family: arial, sans-serif;
+      width: 100%;
+      margin: 0.7rem auto;
+    }
+
+    .flights .flights-content th {
+      text-align: left;
+      font-weight: bold;
+      font-size: 8px;
+    }
+
+    .flights .flights-content tr td {
+      text-align: left;
+      font-size: 7px;
+      padding: 5px auto;
+    }
+
+    .flights .flights-content tr:nth-child(even) {
+    
+    }
+   
+	 /* accommodation */
+	 .accommodation .accommodation-header {
+      display: flex;
+      justify-content: space-between;
+      background-color: rgb(25,44,79);
+      border-radius: 10px;
+      color: white;
+      font-weight: bold;
+      padding: 10px;
+      align-items: center;
+    }
+
+    .accommodation .accommodation-header .header-right {
+      font-size: 10px;
+      text-align: center;
+      font-weight: 400;
+    }
+
+    .accommodation .accommodation-content .accommodation-content-header {
+      margin: 0.7rem auto;
+    }
+
+    .accommodation .accommodation-content .accommodation-content-header table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    .accommodation .accommodation-content .accommodation-content-header th {
+      text-align: left;
+      font-weight: bold;
+      font-size: 8px;
+    }
+
+    .accommodation .accommodation-content .accommodation-content-header tr td {
+      text-align: left;
+      font-size: 8px;
+      padding: 5px auto;
+    }
+
+    .accommodation .accommodation-content .accommodation-content-middle {
+      display: grid;
+      grid-template-columns: auto auto auto;
+      margin: 1rem auto;
+    }
+
+    .accommodation
+      .accommodation-content
+      .accommodation-content-middle
+      .content-middle-child {
+      font-size: 13px;
+    }
+
+    .accommodation
+      .accommodation-content
+      .accommodation-content-middle
+      .middle-child-header {
+      font-weight: bold;
+    }
+
+    .accommodation
+      .accommodation-content
+      .accommodation-content-footer
+      .footer-child-content {
+      font-size: 13px;
+    }
+
+    .accommodation
+      .accommodation-content
+      .accommodation-content-footer
+      .footer-child-header {
+      font-weight: bold;
+      font-size: 13px;
+    }
+
+    /* TRANSFERS */
+    .transfers {
+      margin: 1.5rem auto;
+      font-size: 8px;
+    }
+
+    .transfers .transfers-header {
+      display: flex;
+      justify-content: space-between;
+      background-color: rgb(25,44,79);
+      border-radius: 10px;
+      color: white;
+      font-weight: bold;
+      padding: 10px;
+      align-items: center;
+    }
+
+    .transfers .transfers-header .header-right {
+      font-size: 10px;
+      text-align: center;
+      font-weight: 400;
+    }
+
+    .transfers .transfers-content .transfers-content-header {
+      margin: 0.7rem auto;
+    }
+
+    .transfers .transfers-content .transfers-content-header table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    .transfers .transfers-content .transfers-content-header th {
+      text-align: left;
+      font-weight: bold;
+      font-size: 8px;
+    }
+
+    .transfers .transfers-content .transfers-content-header tr td {
+      text-align: left;
+      font-size: 8px;
+      padding: 5px auto;
+    }
+
+    .transfers
+      .transfers-content
+      .transfers-content-footer
+      .footer-child-content {
+      font-size: 13px;
+    }
+
+    .transfers
+      .transfers-content
+      .transfers-content-footer
+      .footer-child-header {
+      font-weight: bold;
+      font-size: 13px;
+    }
+
+    .first-page .page-header{
+      display: flex;
+      justify-content: end;
+      margin-left: auto; 
+      margin-right: 0;
+      text-align: end;
+      align-items:flex-end;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    .first-page .page-header p {
+    display: flex;
+    justify-content: end;
+    height: 100px;
+    /* width: 50px; */
+    align-items: flex-end;
+    background-color: rgb(68,114,196);
+    color: white;
+    padding: 20px 4px 4px 20px;
+    margin-left: auto; 
+    margin-right: 0;
+    text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .first-page  .page-content {
+      margin: 15rem 2.5rem;
+          font-family: Arial, Helvetica, sans-serif;
+    }
+	</style>
+	<meta charset="utf-8">
+</head>
+<body>
+ <div class="first-page">
+      <div class="page-header">
+        <p>2022</p>
+      </div>
+      <div class="page-content">
+        <p style="color: rgb(68,114,207); font-size:50px">WestJet Vacations Groups</p>
+        <p style="color: rgb(103,78,121); font-size:13px">E-DOCUMENT DESIGN PROPOSAL</p>
+        <p style="color: rgb(160,215,255); font-size:13px">BOJAN RISOJEVIC FOR TRAVELBRANDS INC.</p>
+      </div>
+    </div>
+  <p style="page-break-after: always;">&nbsp;</p>
+  {{#each hotelInfo}}
+	  <header>
+        <div class="header">
+          <div class="logo">
+            <img
+              src="https://www.imgserver.ca/WestJetGroups/logo-westjet.png"
+            />
+          </div>
+          <div class="content">
+            <div class="box" style="font-size: 8px;">
+              <span>{{../this.agency}}</span><br />
+              <span>{{../this.agencyAddress1}}</span><br />
+              {{#if ../this.agencyAddress2}}
+              <span>{{../this.agencyAddress2}}</span><br />
+              {{/if}}
+			        <span><a href="">weddings@posetravel.ca</a></span>
+            </div>
+            <div class="box" style="display: flex; flex: 1; font-size:8px">
+              <div style="display: flex; flex-direction: column">
+                <strong>Booking No.: </strong>
+                <strong>Date: </strong>
+              </div>
+              <div
+                style="
+                  display: flex; /* margin-left: auto; */
+                  flex-direction: column;
+                "
+              >
+                <span style="margin-left: auto">&nbsp;{{../this.bNo}}</span>
+                <span>23 March 2022</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        </header>
+		  <h4 style="text-align: center; font-size:10.5px; color: rgb(25,44,79);">ELECTRONIC DOCUMENT</h4>
+        <div class="body">
+          <div class="group-info-passengers">
+            <div class="group-info">
+              <div class="title" style="font-size: 9.5px !important;" >GROUP INFO</div>
+              <div class="group-info-content" style="font-size: 9.5px !important;">
+                <div>
+                  <strong>Group Name:</strong> <span>{{../this.groupName}}</span>
+                </div>
+                <div>
+                  <strong>Group Leader:</strong> <span>Monica Nguyen</span>
+                </div>
+                <div>
+                  <strong>Contact Number:</strong> <span>403.829.2472</span>
+                </div>
+              </div>
+            </div>
+            <div class="passengers">
+              <div class="title" style="font-size: 9.5px !important;">PASSENGERS</div>
+              <div class="passengers-content" style="font-size: 9.5px !important;">
+                {{#each this.pax}}
+                <div>
+                  <span style="font-weight: 500;">{{this.name}}</span>
+                </div>
+                {{/each}}
+              </div>
+            </div>
+          </div>
+          <div class="flights">
+            <div class="flights-header" style="font-size: 9.5px !important;">FLIGHTS</div>
+            <div class="flights-content">
+              <table>
+                <tr>
+                  <th>From</th>
+                  <th>To</th>
+                  <th>Carrier</th>
+                  <th>Flight</th>
+                  <th>Departure Date and Time</th>
+                  <th>Arrival Date and Time</th>
+                  <th>PNR</th>
+                </tr>
+                {{#each this.flight.segments}}
+               <tr>
+                  <td>{{this.from}}</td>
+                  <td>{{this.to}}</td>
+                  <td>{{this.carrier}}</td>
+                  <td>{{this.flight}}</td>
+                  <td>{{this.depDateTime}}</td>
+                  <td>{{this.arrDateTime}}</td>
+                  <td>{{../this.flight.pnr}}</td>
+                </tr>
+                {{/each}}
+             
+              </table>
+            </div>
+          </div>
+          <div class="accommodation">
+            <div class="accommodation-header">
+              <div class="header-left" style="font-size: 9.5px !important;">ACCOMMODATION</div>
+              <div class="header-right" style="font-size: 9.5px !important;">
+                NOTE: Check-in displayed in red due to overnight flights (next
+                day)
+              </div>
+            </div>
+            <div class="accommodation-content">
+              <div class="accommodation-content-header">
+                <table>
+                  <tr>
+                    <th>Hotel</th>
+                    <th>Destination</th>
+                    <th>Duration</th>
+                    <th>Check-in</th>
+                    <th>Check-out</th>
+                    <th>Occupancy</th>
+                    <th>Room Category</th>
+                    <th>Price</th>
+                  </tr>
+                  <tr style="font-size: 8px;">
+                    <td>{{this.hotel.name}}</td>
+                    <td>{{this.hotel.code}}</td>
+                    <td>{{this.hotel.duration}}</td>
+                    <td>{{this.hotel.checkIn}}</td>
+                    <td>{{this.hotel.checkOut}}</td>
+                    <td>{{this.hotel.occupancy}}</td>
+                    <td>{{this.hotel.room}}</td>
+                    <td>2,164.80</td>
+                  </tr>
+                </table>
+              </div>
+              <div class="accommodation-content-middle">
+                <div class="content-middle-child">
+                  <div class="middle-child-header" style="font-size: 8px;">Hotel Address</div>
+                  <div class="middle-child-content">
+                    <span style="font-size: 8px;">{{this.hotel.address1}}</span
+                    ><br />
+                    <span style="font-size: 8px;">{{this.hotel.address2}}</span><br />
+                    <span style="font-size: 8px;">{{this.hotel.address3}}</span>
+                  </div>
+                </div>
+                <div class="content-middle-child">
+                  <div class="middle-child-header" style="font-size: 8px;">Supplier</div>
+                  <div class="middle-child-content">
+                    <span style="font-size: 8px;">Ocean Riviera Paradise</span>
+                  </div>
+                </div>
+                <div class="content-middle-child">
+                  <div class="middle-child-header" style="font-size: 8px;">Special Requests</div>
+                  <div class="middle-child-content">
+                    {{#each this.hotel.specialRqs}}
+                    <span style="font-size: 8px;">{{this}}</span><br />
+                    {{/each}}
+                  </div>
+                </div>
+              </div>
+              <div class="accommodation-content-footer">
+                <div class="footer-child-header" style="font-size: 8px;">Hotel Information</div>
+                <div class="footer-child-content">
+                  {{#each this.hotel.hotelInfo}}
+                  <span style="font-size: 8px;"
+                    >{{this}}</span
+                  ><br />
+                  {{/each}}
+                 
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="transfers">
+            <div class="transfers-header">
+              <div class="header-left" style="font-size: 9.5px !important;">TRANSFERS</div>
+              <div class="header-right" style="font-size: 9.5px !important;">
+                NOTE: Arrival displayed in red due to overnight flights (next
+                day)
+              </div>
+            </div>
+            <div class="transfers-content">
+              <div class="transfers-content-header">
+                <table>
+                  <tr>
+                    <th>Transfer</th>
+                    <th>Destination</th>
+                    <th>Arrival</th>
+                    <th>Departure</th>
+                    <th>Supplier</th>
+                  </tr>
+                  <tr>
+                    <td>{{this.transfer.name}}</td>
+                    <td>{{this.transfer.destination}}</td>
+                    <td>12 Mar 2022</td>
+                    <td>19 Mar 2022</td>
+                    <td>{{this.transfer.supplier}}</td>
+                  </tr>
+                </table>
+              </div>
+              <div class="transfers-content-footer">
+                <div class="footer-child-header" style="font-size: 8px;">Transfer Information</div>
+                <div class="footer-child-content">
+                  <span style="font-size: 8px;"
+                    >{{this.transfer.trRemark}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p style="page-break-after: always;">&nbsp;</p>
+  {{/each}}
+  
+</body>
+</html>

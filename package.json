@@ -18,6 +18,7 @@
   "homepage": "https://github.com/rodolfo-marcos07/pdf-generator-sample#readme",
   "dependencies": {
     "handlebars": "^4.0.12",
+    "lodash": "^4.17.21",
     "puppeteer": "^1.11.0"
   }
 }
